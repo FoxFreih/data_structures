@@ -50,6 +50,23 @@ void print()
 	printf("NULL \n");
 
 }
+struct Node* reverse(struct Node* temp)
+{
+	struct Node* x = (struct Node*)malloc(sizeof(struct Node));
+	if (temp->next != NULL)
+		x = reverse(temp->next);
+	else
+		return temp;
+	x->next = temp;
+	if (head == temp)
+	{
+		head = tail;
+		tail = temp;
+		tail->next = NULL;
+
+	}
+	return temp;
+}
 
 
 void main()
@@ -82,6 +99,8 @@ void main()
 
 	}
 	//printf("%d", tail->data);
+	print();
+	reverse(head);
 	print();
 
 
